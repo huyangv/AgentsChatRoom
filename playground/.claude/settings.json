@@ -1,0 +1,33 @@
+{
+  "env": {
+    "CLAUDE_CODE_STOP_HOOK_BLOCK_CAP": "0"
+  },
+  "enabledMcpjsonServers": ["chatroom"],
+  "permissions": {
+    "allow": ["mcp__chatroom__chat_read", "mcp__chatroom__chat_send"]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "__ROOT__/bin/chatroom-bridge hook session-start --agent claude",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "__ROOT__/bin/chatroom-bridge hook stop --agent claude",
+            "timeout": 1800
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "description": "AgentChatRoom：会话启动时登记；每轮结束时等待聊天室新消息",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "__ROOT__/bin/chatroom-bridge hook session-start --agent codex",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "__ROOT__/bin/chatroom-bridge hook stop --agent codex",
+            "timeout": 1800,
+            "statusMessage": "等待聊天室消息"
+          }
+        ]
+      }
+    ]
+  }
+}

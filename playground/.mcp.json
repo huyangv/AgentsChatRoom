@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "chatroom": {
+      "command": "__ROOT__/bin/chatroom-bridge",
+      "args": ["mcp", "--agent", "claude"]
+    }
+  }
+}
